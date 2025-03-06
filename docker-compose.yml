@@ -1,0 +1,82 @@
+
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: postgres
+    volumes:
+      - ./init-db:/docker-entrypoint-initdb.d
+    networks:
+      - backend
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - "15672:15672"
+    networks:
+      - backend
+
+  user-service:
+    build: ./user
+    environment:
+      DB_HOST: postgres
+      DB_NAME: user_db
+      DB_USER: myuser
+      DB_PASSWORD: mypassword
+    depends_on:
+      - postgres
+    networks:
+      - backend
+
+  job-service:
+    build: ./jobs
+    environment:
+      DB_HOST: postgres
+      DB_DATABASE: job_db
+      DB_USERNAME: myuser
+      DB_PASSWORD: mypassword
+      RABBITMQ_HOST: rabbitmq
+    depends_on:
+      - postgres
+      - rabbitmq
+    networks:
+      - backend
+
+  # notification-service:
+  #   build: ./realtime
+  #   environment:
+  #     USER_SERVICE_URL: http://user-service:8000
+  #     RABBITMQ_HOST: rabbitmq
+  #   depends_on:
+  #     - rabbitmq
+  #     - user-service
+  #   networks:
+  #     - backend
+
+  # dashboard-service:
+  #   build: ./dashboard-service
+  #   networks:
+  #     - backend
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - user-service
+      - job-service
+      # - notification-service
+      # - dashboard-service  # New dependency
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
