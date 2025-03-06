@@ -1,5 +1,6 @@
 # jobiza
  #sry D: This is our new structure
+ =
 ├── user-service/        ⇨⇨⇨         Django-based User Service
 │   ├── Dockerfile       ⇨⇨⇨         Dockerfile for building the User Service
 │   ├── manage.py        ⇨⇨⇨         Django management script
@@ -63,7 +64,9 @@
 
 .
 #User Service (Django): Handles user authentication and profiles.
+=
 #Job Service (Laravel): Manages job postings and applications, with APIs like:
+=
 ###POST /api/jobs: Create a new job (for companies).
 ###GET /api/jobs: Retrieve jobs with filters.
 ###PUT /api/jobs/{id}: Update a job.
@@ -72,7 +75,9 @@
 ###PUT /api/applications/{id}/status: Update application status (for companies).
 #Notification Service (Node.js): Handles sending notifications, with APIs like:
 ###POST /api/notifications/send: Send notifications to specified users.
+
 #Inter-Service Communication
+=
 ##APIs: RESTful endpoints for synchronous calls (e.g., frontend to services, Notification Service to User Service).
 ##Message Queue: RabbitMQ for asynchronous events (e.g., job postings triggering notifications).
 ##Authentication: JWT tokens included in API requests, validated by each service.
