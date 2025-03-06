@@ -61,7 +61,7 @@
 ├── docker-compose.yml   ⇨⇨⇨         Docker Compose file to orchestrate services
 └── .gitignore           ⇨⇨⇨         Git ignore file
 
-
+.
 #User Service (Django): Handles user authentication and profiles.
 #Job Service (Laravel): Manages job postings and applications, with APIs like:
 ###POST /api/jobs: Create a new job (for companies).
