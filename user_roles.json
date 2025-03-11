@@ -1,0 +1,43 @@
+Roles  {
+    jobseeker : {
+        Read: Job listings, application status, company profiles.
+
+        Write: Apply to jobs, update profile, upload documents.
+
+        Delete: Withdraw applications, delete uploaded documents.
+
+            }
+
+}
+
+Admins{
+    super_admin : Administrator can do every thing even delete admin
+    admin : {
+
+        Can do everything expect delete administrator
+
+    }
+
+
+}
+
+Company {
+    #administratr#
+    Manager : {
+        Read: Candidate profiles, application details, analytics.
+
+        Write: Post/edit jobs, send interview invites, update application status.
+
+        Delete: Remove job postings, archive applications.
+        }   
+    
+    Hr      {
+        Read: Candidate profiles, job postings, application details.
+
+        Write: Post jobs, update application status, send messages.
+    
+        Delete: Remove job postings, archive applications.
+
+        }
+    
+}
