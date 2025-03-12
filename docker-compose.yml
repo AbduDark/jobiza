@@ -22,7 +22,7 @@ services:
       - backend
 
   user-service:
-    build: ./user
+    build: ./dj-jobizz
     environment:
       DB_HOST: postgres
       DB_NAME: user_db
@@ -33,19 +33,19 @@ services:
     networks:
       - backend
 
-  job-service:
-    build: ./jobs
-    environment:
-      DB_HOST: postgres
-      DB_DATABASE: job_db
-      DB_USERNAME: myuser
-      DB_PASSWORD: mypassword
-      RABBITMQ_HOST: rabbitmq
-    depends_on:
-      - postgres
-      - rabbitmq
-    networks:
-      - backend
+  # job-service:
+  #   build: ./jobs
+  #   environment:
+  #     DB_HOST: postgres
+  #     DB_DATABASE: job_db
+  #     DB_USERNAME: myuser
+  #     DB_PASSWORD: mypassword
+  #     RABBITMQ_HOST: rabbitmq
+  #   depends_on:
+  #     - postgres
+  #     - rabbitmq
+  #   networks:
+  #     - backend
 
   # notification-service:
   #   build: ./realtime

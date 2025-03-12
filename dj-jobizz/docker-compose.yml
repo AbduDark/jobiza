@@ -1,32 +1,32 @@
-version: '3.8'
+# version: '3.8'
 
-services:
-  db:
-    image: postgres:15
-    container_name: jobizz_db
-    restart: always
-    environment:
-      POSTGRES_DB: jobizz
-      POSTGRES_USER: jobizz_user
-      POSTGRES_PASSWORD: jobizz_pass
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+# services:
+#   db:
+#     image: postgres:15
+#     container_name: jobizz_db
+#     restart: always
+#     environment:
+#       POSTGRES_DB: jobizz
+#       POSTGRES_USER: jobizz_user
+#       POSTGRES_PASSWORD: jobizz_pass
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data
+#     ports:
+#       - "5432:5432"
 
-  web:
-    build: .
-    container_name: jobizz_app
-    command: gunicorn --bind 0.0.0.0:8000 Jobizz.wsgi:application
-    volumes:
-      - .:/app
-    ports:
-      - "8000:8000"
-    depends_on:
-      - db
-    environment:
-      - DEBUG=False
-      - DATABASE_URL=postgres://jobizz_user:jobizz_pass@db:5432/jobizz
+#   web:
+#     build: .
+#     container_name: jobizz_app
+#     command: gunicorn --bind 0.0.0.0:8000 Jobizz.wsgi:application
+#     volumes:
+#       - .:/app
+#     ports:
+#       - "8000:8000"
+#     depends_on:
+#       - db
+#     environment:
+#       - DEBUG=False
+#       - DATABASE_URL=postgres://jobizz_user:jobizz_pass@db:5432/jobizz
 
-volumes:
-  postgres_data:
+# volumes:
+#   postgres_data:
