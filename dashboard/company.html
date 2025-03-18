@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Management</title>
+    <!-- fontAwesome -->
+    <link rel="stylesheet" href="css/vendor/all.min.css">
+
+    <link rel="stylesheet" href="./css/pages/company.css">
+</head>
+
+<body>
+
+
+    <!-- ✅ Navbar -->
+    <nav class="navbar">
+        <div class="nav-icons">
+            <i class="fas fa-envelope"></i>
+            <i class="fas fa-bell"><span class="badge">4</span></i>
+            <i class="fas fa-layer-group"></i>
+            <div class="profile">
+                <img src="assets/images//avata.jpeg" alt="User Profile">
+
+                <span>Hi, User</span>
+            </div>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+            <i class="fas fa-search"></i>
+        </div>
+    </nav>
+
+    <!-- ✅ Sidebar -->
+    <div class="sidebar">
+        <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
+        <ul>
+            <!-- <li>
+            <a href="#">
+                <span class="icon">
+                    <ion-icon name="logo-apple"></ion-icon>
+                </span>
+                <span class="title">Brand Name</span>
+            </a>
+        </li> -->
+
+            <li>
+                <a href="index.html">
+                    <span class="icon">
+                        <i class="fa-sharp fa-solid fa-house"></i>
+                    </span>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="user.html">
+                    <span class="icon">
+                        <i class="fa-solid fa-users"></i>
+                    </span>
+                    <span class="text">Users</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="job.html">
+                    <span class="icon">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </span>
+                    <span class="text">Jobs</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="company.html">
+                    <span class="icon">
+                        <i class="fa-solid fa-buildings"></i>
+                    </span>
+                    <span class="text">Companies</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="profile.html">
+                    <span class="icon">
+                        <i class="fa-solid fa-user"></i>
+                    </span>
+                    <span class="text">Profile</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="register.html">
+                    <span class="icon">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </span>
+                    <span class="text">Register</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="setting.html">
+                    <span class="icon">
+                        <i class="fa-solid fa-gear"></i>
+                    </span>
+                    <span class="text">Settings</span>
+                </a>
+            </li>
+            <!-- 
+            <li>
+                <a href="register.html">
+                    <span class="icon">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </span>
+                    <span class="text">Logout</span>
+                </a>
+            </li> -->
+        </ul>
+    </div>
+
+
+
+    <!-- ✅ Main Container -->
+    <div class="container">
+        <h2>Company List</h2>
+
+        <!-- ✅ تحسين تصميم الفلترة -->
+        <div class="filter-section">
+            <label for="statusFilter">Status:</label>
+            <select id="statusFilter">
+                <option value="">All</option>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            </select>
+
+            <label for="jobsFilter">Job Count:</label>
+            <input type="number" id="jobsFilter" min="0" placeholder="Min Jobs">
+
+            <button onclick="filterCompanies()">Filter</button>
+        </div>
+
+        <!-- ✅ إضافة جدول الشركات -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Company Name</th>
+                        <th>Email</th>
+                        <th>Job Count</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="companyTableBody">
+                    <!-- سيتم ملء البيانات ديناميكيًا -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ✅ قائمة الشركات في الموبايل -->
+        <div id="companyList" class="company-list"></div>
+    </div>
+
+   <!-- js -->
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/company.js" defer></script>
+</body>
+
+</html>

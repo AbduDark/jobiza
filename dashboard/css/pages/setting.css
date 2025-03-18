@@ -1,0 +1,457 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: left;
+    direction: ltr;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+:root {
+    --primary-color: #356899;
+    --white: #fff;
+    --gray: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
+}
+.container {
+    width: 83%;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    margin-left: 70px;
+    padding-bottom: 150px;
+    margin-top: 90px;
+}
+
+h1 {
+    text-align: center;
+}
+
+h3 {
+    color: #070707;
+}
+
+/* Tabs Styling */
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px;
+    background: #EDF3FC;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    color: #5386E4;
+}
+
+.btn-center {
+
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+
+.tab.active,
+.tab:hover {
+    background: #356899;
+    color: white;
+}
+
+/* Sections */
+.tab-content {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input,
+select,
+button {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #356899;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.file-upload {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 2px;
+    width: 100%;
+}
+
+.custom-file-upload {
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#file-name {
+    font-size: 14px;
+    color: #333;
+}
+
+
+/* ✅ Navbar */
+.navbar {
+    width: 100%;
+    background: white;
+    padding: 5px 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    height: 60px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: #f1f1f1;
+    padding: 8px 12px;
+    border-radius: 20px;
+}
+
+.search-box input {
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 5px;
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-icons i {
+    font-size: 18px;
+    cursor: pointer;
+    position: relative;
+}
+
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: green;
+    color: white;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+
+
+/* ✅ Sidebar */
+.sidebar {
+    width: 60px;
+    height: 100vh;
+    background: #356899;
+    color: white;
+    transition: width 0.3s ease;
+    position: fixed;
+    top: 0px;
+    /* تحديد موقع السايد بار تحت الـ Navbar */
+    left: 0;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.sidebar.open {
+    width: 200px;
+}
+
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    color: #ffffff;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #ffffff;
+    transition: background 0.3s;
+}
+
+.sidebar ul li:hover {
+    background: #ffff;
+    color: #356899;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.sidebar ul li i {
+    font-size: 20px;
+    width: 40px;
+    text-align: center;
+}
+
+.sidebar ul li .text {
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+    color: #f1f1f1;
+    text-decoration: none;
+}
+
+.sidebar.open ul li .text {
+    opacity: 1;
+    color: #f1f1f1;
+
+    text-decoration-line: none;
+}
+
+.sidebar.open ul li:hover .text {
+
+    color: #356899;
+
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.sidebar ul li a:hover {
+    text-decoration: none;
+}
+
+/* ✅ جعل التصميم متجاوب مع الشاشات الصغيرة */
+@media (max-width: 1200px) {
+    .container {
+        width: 80%;
+        margin-left: 100px;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 100px;
+    }
+
+    .sidebar {
+        width: 50px;
+        height: 120vh;
+    }
+
+    .sidebar.open {
+        width: 180px;
+    }
+
+    .sidebar ul li .text {
+        opacity: 0;
+    }
+
+    .sidebar.open ul li .text {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 15px;
+        margin-top: 80px;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+
+    .tab {
+        width: 100%;
+    }
+
+    .navbar {
+        flex-direction: row;
+        /* إبقاء العناصر في نفس السطر */
+        height: auto;
+        padding: 10px;
+    }
+
+    .search-box {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .nav-icons {
+        margin-top: 10px;
+    }
+
+    .profile {
+        justify-content: center;
+        margin-top: 10px;
+
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+        margin-top: 110px;
+        margin-left: 30px;
+    }
+
+    .sidebar {
+        width: 45px;
+        height: 120vh;
+    }
+
+    .sidebar.open {
+        width: 160px;
+    }
+
+    .sidebar ul li {
+        padding: 10px;
+    }
+
+    .sidebar ul li i {
+        font-size: 18px;
+        width: 30px;
+    }
+
+    .tab {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 400px) {
+    .container {
+        padding: 8px;
+    }
+
+    .tab {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .profile img {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+
+/* ✅ تنسيق الهيدر */
+.header {
+    display: flex;
+    justify-content: space-between; /* توزيع العناصر */
+    align-items: center; /* محاذاة عمودية */
+    color: white;
+    background-color: #285176;
+    padding: 10px 20px;
+    position: relative; /* مهم لتوسيط زر الثلاث شرط */
+  }
+  
+  /* ✅ تنسيق اللوجو */
+  .logo {
+    width: 35%; /* تأخذ نسبة من العرض */
+    max-width: 150px; /* تحديد أقصى عرض للصورة */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  /* ✅ تنسيق زر الثلاث شرط */
+  .toggle-btn {
+    position: absolute; /* جعله مطلق التمركز */
+    left: 60%; /* تمركز أفقي */
+    transform: translateX(-50%); /* جعله في المنتصف */
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+  /* ✅ إخفاء اللوجو عند إغلاق السايد بار */
+  .sidebar:not(.open) ~ .header .logo {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+  }
+  
+  /* ✅ توسيط زر الثلاث شرط عند غلق السايد بار */
+  .sidebar:not(.open) ~ .header .toggle-btn {
+    left: 60%; /* إبقاؤه في المنتصف */
+    transform: translateX(-50%);
+  }
+  
+  /* ✅ عند فتح السايد بار، يعود اللوجو ويظل زر الثلاث شرط في مكانه */
+  .sidebar.open ~ .header .logo {
+    opacity: 1;
+    visibility: visible;
+  }
+  

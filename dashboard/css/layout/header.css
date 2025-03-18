@@ -1,0 +1,154 @@
+/* ✅  start top-bar */
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 60px;
+  width: calc(100% - 60px);
+  background: white;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  padding: 10px 20px;
+  justify-content: space-between;
+  z-index: 1000;
+  transition: all 0.5s;
+}
+
+.top-bar.open {
+  left: 250px;
+  width: calc(100% - 250px);
+  transition: 0.5s;
+}
+
+
+.search-container {
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
+}
+
+
+.search-input {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+
+.search-button {
+  background-color: var(--primary-color);
+  border: 1px solid #ddd;
+  border-left: none;
+  padding: 10px 15px;
+  color: var(--white);
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #418cd3;
+}
+
+.search-button i {
+  font-size: 18px;
+}
+
+
+.icon-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+}
+
+.icon-section i {
+  display: none;
+}
+
+
+.notification-badge {
+  background: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  position: relative;
+  top: -8px;
+  right: 5px;
+
+}
+
+
+
+/* ✅ تنسيق القائمة المنسدلة */
+.user-profile {
+  position: relative;
+  cursor: pointer;
+
+  transition: all 0.5s ease;
+
+
+}
+
+.user-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+
+
+.user-profile .dropdown-box {
+  position: absolute;
+  top: 55px;
+  right: -220px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  width: 200px;
+  transition: all 1s ease;
+
+}
+
+.user-info {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.dropdown-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.dropdown-box ul li {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.dropdown-box ul li:hover {
+  background: #f0f0f0;
+}
+
+
+/* ✅ عند ظهور القائمة */
+.user-profile.active .dropdown-box {
+
+  right: -15px;
+}
+
+
+/* end top-bar */
+
+
+
+
+

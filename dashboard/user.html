@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job user Dashboard</title>
+    <!-- fontAwesome -->
+    <link rel="stylesheet" href="css/vendor/all.min.css">
+    <link rel="stylesheet" href="./css/pages/user.css">
+
+</head>
+
+<body>
+    <!-- ✅ Navbar -->
+    <nav class="navbar">
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="nav-icons">
+            <i class="fas fa-envelope"></i>
+            <i class="fas fa-bell"><span class="badge">4</span></i>
+            <i class="fas fa-layer-group"></i>
+            <div class="profile">
+                <img src="assets/images//avata.jpeg" alt="User Profile">
+
+                <span class="name">Hi, Ahmed</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidebar">
+        <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
+        <ul>
+            <!-- <li>
+            <a href="#">
+                <span class="icon">
+                    <ion-icon name="logo-apple"></ion-icon>
+                </span>
+                <span class="title">Brand Name</span>
+            </a>
+        </li> -->
+
+            <li>
+                <a href="index.html">
+                    <span class="icon">
+                        <i class="fa-sharp fa-solid fa-house"></i>
+                    </span>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="user.html">
+                    <span class="icon">
+                        <i class="fa-solid fa-users"></i>
+                    </span>
+                    <span class="text">Users</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="job.html">
+                    <span class="icon">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </span>
+                    <span class="text">Jobs</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="company.html">
+                    <span class="icon">
+                        <i class="fa-solid fa-buildings"></i>
+                    </span>
+                    <span class="text">Companies</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="profile.html">
+                    <span class="icon">
+                        <i class="fa-solid fa-user"></i>
+                    </span>
+                    <span class="text">Profile</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="register.html">
+                    <span class="icon">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </span>
+                    <span class="text">Register</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="setting.html">
+                    <span class="icon">
+                        <i class="fa-solid fa-gear"></i>
+                    </span>
+                    <span class="text">Settings</span>
+                </a>
+            </li>
+            <!-- 
+            <li>
+                <a href="register.html">
+                    <span class="icon">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </span>
+                    <span class="text">Logout</span>
+                </a>
+            </li> -->
+        </ul>
+    </div>
+
+
+    <!-- ✅ Container -->
+    <div class="container">
+        <h1>Job User Dashboard</h1>
+        <h2>Total Registered Users: <span id="user-count">0</span></h2>
+
+        <input type="text" id="searchInput" placeholder="Search users..." onkeyup="searchUsers()">
+
+        <div id="loader" class="loader"></div>
+        <div class="cards-container"></div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="user-table-body"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/user.js"></script>
+</body>
+
+</html>

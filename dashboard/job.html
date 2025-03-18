@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings Dashboard</title>
+
+    <!-- fontAwesome -->
+    <link rel="stylesheet" href="css/vendor/all.min.css">
+
+    <link rel="stylesheet" href="./css/pages/job.css">
+
+</head>
+
+<body>
+
+    <!-- ✅ Navbar -->
+    <nav class="navbar">
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="nav-icons">
+            <i class="fas fa-envelope"></i>
+            <i class="fas fa-bell"><span class="badge">4</span></i>
+            <i class="fas fa-layer-group"></i>
+            <div class="profile">
+                <img src="assets/images//avata.jpeg" alt="User Profile">
+
+                <span class="name">Hi, User</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ✅ Sidebar -->
+    <div class="sidebar">
+        <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
+        <ul>
+            <!-- <li>
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="logo-apple"></ion-icon>
+                    </span>
+                    <span class="title">Brand Name</span>
+                </a>
+            </li> -->
+
+            <li>
+                <a href="index.html">
+                    <span class="icon">
+                        <i class="fa-sharp fa-solid fa-house"></i>
+                    </span>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="user.html">
+                    <span class="icon">
+                        <i class="fa-solid fa-users"></i>
+                    </span>
+                    <span class="text">Users</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="job.html">
+                    <span class="icon">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </span>
+                    <span class="text">Jobs</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="company.html">
+                    <span class="icon">
+                        <i class="fa-solid fa-buildings"></i>
+                    </span>
+                    <span class="text">Companies</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="profile.html">
+                    <span class="icon">
+                        <i class="fa-solid fa-user"></i>
+                    </span>
+                    <span class="text">Profile</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="register.html">
+                    <span class="icon">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </span>
+                    <span class="text">Register</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="setting.html">
+                    <span class="icon">
+                        <i class="fa-solid fa-gear"></i>
+                    </span>
+                    <span class="text">Settings</span>
+                </a>
+            </li>
+            <!-- 
+                <li>
+                    <a href="register.html">
+                        <span class="icon">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </span>
+                        <span class="text">Logout</span>
+                    </a>
+                </li> -->
+        </ul>
+    </div>
+
+
+    <!-- ✅ Container -->
+    <div class="container">
+        <h2>Job Listings Dashboard</h2>
+        <button class="add-btn" onclick="openAddJobModal()"><i class="fa-solid fa-plus"></i> Add Job</button>
+
+        <div class="filter-container">
+            <input type="text" id="searchInput" placeholder="Search job title or company...">
+            <select id="statusFilter">
+                <option value="">All</option>
+                <option value="Accepted">Accepted</option>
+                <option value="Rejected">Rejected</option>
+                <option value="Pending">Pending</option>
+            </select>
+            <button class="filter-btn" onclick="applyFilters()"><i class="fa-solid fa-filter"></i> Filter Jobs</button>
+        </div>
+
+        <div id="loading">Loading...</div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Job Title</th>
+                        <th>Company Name</th>
+                        <th>Applicants</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="jobTable"></tbody>
+            </table>
+        </div>
+
+        <div class="pagination" id="pagination"></div>
+    </div>
+    <!-- Modal for Adding/Editing Job -->
+    <div id="jobModal" class="modal">
+        <div class="modal-content">
+            <div class="close-btn">
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+
+
+            <h3 id="modalTitleText">Add Job</h3>
+            <!-- <div class="inp"> -->
+            <input type="hidden" id="modalJobId">
+            <input type="text" id="modalTitle" placeholder="Job Title" class="inp">
+            <input type="text" id="modalCompany" placeholder="Company Name" class="inp">
+            <input type="number" id="modalApplicants" placeholder="Applicants" class="inp">
+            <select id="modalStatus" class="inp">
+                <option value="Accepted">Accepted</option>
+                <option value="Rejected">Rejected</option>
+                <option value="Pending">Pending</option>
+            </select>
+            <button onclick="saveChanges()" class="btn"><i class="fa-solid fa-save"></i> Save</button>
+            <!-- </div> -->
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="./js/job.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+
+services:
+#                          Postgresql Service
+   db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: jobizz
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 123456
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend
+    healthcheck:  # Added healthcheck
+        test: ["CMD-SHELL", "pg_isready -U root -d jobizz"]
+        interval: 5s
+        timeout: 5s
+        retries: 5
+  #####################################################################################################################################################################
+  #                        Database Mangment UI
+   adminer:
+      image: adminer
+      restart: always
+      ports:
+      - 8080:8080
+      depends_on:
+      - db
+      networks:
+      - backend
+#######################################################################################################################################################################
+   rabbitmq:
+      image: rabbitmq:3-management
+      environment:
+        RABBITMQ_DEFAULT_USER: guest
+        RABBITMQ_DEFAULT_PASS: guest
+        RABBITMQ_DEFAULT_VHOST: /jobizz
+        POSTGRES_HOST_AUTH_METHOD: scram-sha-256
+      ports:
+        - 15672:15672
+      networks:
+        - backend
+#######################################################################################################################################################################
+#                          Django Auth Service                          #
+   user-service:
+     build: ./dj-jobizz
+     volumes:
+      - ./dj-jobizz/:/app
+      - static_volume:/app/staticfiles
+     environment:
+        DB_HOST: db
+        DB_PORT: 5432
+        DB_NAME: jobizz
+        DB_USER: root
+        DB_PASSWORD: 123456
+        STATIC_ROOT: /app/staticfiles
+        STATIC_URL: /static/
+     depends_on:
+       - db
+     networks:
+       - backend
+#######################################################################################################################################################################
+#                          Dashboard Companies
+#######################################################################################################################################################################
+   nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+      # - "443:443"
+    depends_on:
+      - user-service
+      - adminer
+      - db
+      # - realtime
+    volumes:
+     - static_volume:/app/staticfiles
+    #  - /etc/letsencrypt/live/jobizz.mooo.com/:/etc/ssl/certs:ro
+    #  - /etc/letsencrypt/archive/jobizz.mooo.com/:/etc/ssl/archive:ro
+    #  - /var/www/acme-challenge:/var/www/acme-challenge
+    networks:
+      - backend
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+networks:
+  backend:
+    driver: bridge
+volumes:
+  postgres_data:
+  static_volume:
