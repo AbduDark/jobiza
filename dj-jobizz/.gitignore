@@ -90,4 +90,4 @@ celerybeat-schedule
 # Database
 db.sqlite3
 
-entrypoint.sh
+.ssh/
